@@ -63,7 +63,19 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-				'pink-purple': {
+				'purple-dream': {
+					50: '#faf5ff',
+					100: '#f3e8ff',
+					200: '#e9d5ff',
+					300: '#d8b4fe',
+					400: '#c084fc',
+					500: '#a855f7',
+					600: '#9333ea',
+					700: '#7c3aed',
+					800: '#6b21a8',
+					900: '#581c87',
+				},
+				'magenta-glow': {
 					50: '#fdf2f8',
 					100: '#fce7f3',
 					200: '#fbcfe8',
@@ -75,17 +87,17 @@ export default {
 					800: '#9d174d',
 					900: '#831843',
 				},
-				'purple-pink': {
-					50: '#faf5ff',
-					100: '#f3e8ff',
-					200: '#e9d5ff',
-					300: '#d8b4fe',
-					400: '#c084fc',
-					500: '#a855f7',
-					600: '#9333ea',
-					700: '#7c3aed',
-					800: '#6b21a8',
-					900: '#581c87',
+				'amber-sun': {
+					50: '#fffbeb',
+					100: '#fef3c7',
+					200: '#fde68a',
+					300: '#fcd34d',
+					400: '#fbbf24',
+					500: '#f59e0b',
+					600: '#d97706',
+					700: '#b45309',
+					800: '#92400e',
+					900: '#78350f',
 				}
 			},
 			borderRadius: {
@@ -129,16 +141,34 @@ export default {
 						'background-size': '200% 200%',
 						'background-position': 'right center'
 					}
+				},
+				'shimmer': {
+					'0%': {
+						'background-position': '-200% 0'
+					},
+					'100%': {
+						'background-position': '200% 0'
+					}
+				},
+				'float': {
+					'0%, 100%': {
+						transform: 'translateY(0px)'
+					},
+					'50%': {
+						transform: 'translateY(-10px)'
+					}
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out',
 				'fade-in': 'fade-in 0.3s ease-out',
-				'gradient-x': 'gradient-x 3s ease infinite'
+				'gradient-x': 'gradient-x 3s ease infinite',
+				'shimmer': 'shimmer 2s linear infinite',
+				'float': 'float 3s ease-in-out infinite'
 			},
 			fontFamily: {
-				'inter': ['Inter', 'system-ui', 'sans-serif'],
+				'playfair': ['Playfair Display', 'serif'],
 				'poppins': ['Poppins', 'system-ui', 'sans-serif'],
 			}
 		}

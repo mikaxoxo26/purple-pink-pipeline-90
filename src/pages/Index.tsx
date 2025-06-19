@@ -46,8 +46,8 @@ const Index = () => {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-pink-100 via-purple-50 to-indigo-100">
-        <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-pink-500"></div>
+      <div className="min-h-screen flex items-center justify-center aurora-bg">
+        <div className="animate-spin rounded-full h-32 w-32 border-b-4 border-white shadow-2xl"></div>
       </div>
     );
   }
@@ -59,7 +59,7 @@ const Index = () => {
   const currentProjects = getProjectsByCategory(activeTab);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-pink-50 via-purple-50 to-indigo-50">
+    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-pink-50 to-amber-50">
       <Header />
       <ProjectTabs 
         activeTab={activeTab} 
@@ -70,16 +70,16 @@ const Index = () => {
       <main className="container mx-auto px-4 py-8">
         <div className="mb-8 flex items-center justify-between">
           <div>
-            <h2 className="text-3xl font-bold font-poppins gradient-text mb-2">
+            <h2 className="text-4xl font-bold font-playfair gradient-text mb-2 animate-float">
               Welcome back, {user.name}!
             </h2>
-            <p className="text-gray-600">
+            <p className="text-gray-600 text-lg font-poppins">
               Manage and monitor all your projects from this comprehensive dashboard.
             </p>
           </div>
           <Button
             onClick={handleViewTeamMembers}
-            className="bg-gradient-to-r from-blue-500 to-cyan-600 hover:from-blue-600 hover:to-cyan-700 text-white"
+            className="bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 hover:from-blue-600 hover:via-purple-600 hover:to-pink-600 text-white font-playfair font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
           >
             <Users className="w-4 h-4 mr-2" />
             View Team Members
@@ -89,28 +89,28 @@ const Index = () => {
         <DashboardStats />
 
         <div className="mb-6">
-          <h3 className="text-2xl font-bold font-poppins text-gray-900 mb-4 capitalize">
+          <h3 className="text-3xl font-bold font-playfair text-gray-900 mb-4 capitalize">
             {activeTab === 'rnd' ? 'R&D Projects' : activeTab === 'kscst' ? 'KSCST Projects' : `${activeTab} Projects`}
           </h3>
-          <p className="text-gray-600">
+          <p className="text-gray-600 font-poppins text-lg">
             {currentProjects.length} project{currentProjects.length !== 1 ? 's' : ''} in this category
           </p>
         </div>
 
         {currentProjects.length === 0 ? (
           <div className="text-center py-12">
-            <div className="w-24 h-24 mx-auto mb-4 bg-gradient-to-br from-pink-100 to-purple-100 rounded-full flex items-center justify-center">
+            <div className="w-24 h-24 mx-auto mb-4 bg-gradient-to-br from-purple-100 to-pink-100 rounded-full flex items-center justify-center animate-float">
               <span className="text-4xl">📁</span>
             </div>
-            <h3 className="text-xl font-semibold text-gray-900 mb-2">
+            <h3 className="text-2xl font-semibold text-gray-900 mb-2 font-playfair">
               No projects found
             </h3>
-            <p className="text-gray-600 mb-6">
+            <p className="text-gray-600 mb-6 font-poppins">
               Start by creating your first project in this category.
             </p>
             <button
               onClick={handleCreateProject}
-              className="bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-200 transform hover:scale-105"
+              className="bg-gradient-to-r from-purple-600 via-magenta-glow-500 to-amber-sun-500 hover:from-purple-700 hover:via-magenta-glow-600 hover:to-amber-sun-600 text-white px-8 py-4 rounded-lg font-semibold font-playfair transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
             >
               Create New Project
             </button>

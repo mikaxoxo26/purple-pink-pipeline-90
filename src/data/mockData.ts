@@ -395,12 +395,12 @@ export const mockProjects: Project[] = [
     updatedAt: '2024-03-08'
   },
 
-  // KSCET Projects
+  // KSCST Projects (fixed category from "kscet" to "kscst")
   {
     id: '14',
-    title: 'KSCET Digital Transformation Initiative',
-    description: 'Comprehensive digital transformation of KSCET campus including smart classrooms, digital library, and online services.',
-    category: 'kscet',
+    title: 'KSCST Digital Transformation Initiative',
+    description: 'Comprehensive digital transformation of KSCST campus including smart classrooms, digital library, and online services.',
+    category: 'kscst',
     status: 'in-progress',
     priority: 'critical',
     startDate: '2023-04-01',
@@ -419,9 +419,9 @@ export const mockProjects: Project[] = [
   },
   {
     id: '15',
-    title: 'KSCET Alumni Network Platform',
-    description: 'Comprehensive alumni network platform for KSCET with job portal, mentorship program, and event management.',
-    category: 'kscet',
+    title: 'KSCST Alumni Network Platform',
+    description: 'Comprehensive alumni network platform for KSCST with job portal, mentorship program, and event management.',
+    category: 'kscst',
     status: 'completed',
     priority: 'medium',
     startDate: '2022-06-01',
@@ -440,9 +440,9 @@ export const mockProjects: Project[] = [
   },
   {
     id: '16',
-    title: 'KSCET Research Publication Portal',
-    description: 'Digital portal for KSCET faculty and students to publish and access research papers with peer review system.',
-    category: 'kscet',
+    title: 'KSCST Research Publication Portal',
+    description: 'Digital portal for KSCST faculty and students to publish and access research papers with peer review system.',
+    category: 'kscst',
     status: 'in-progress',
     priority: 'high',
     startDate: '2023-10-01',
@@ -461,9 +461,9 @@ export const mockProjects: Project[] = [
   },
   {
     id: '17',
-    title: 'KSCET Smart Campus IoT Network',
-    description: 'Implementation of IoT sensors across KSCET campus for energy management, security, and environmental monitoring.',
-    category: 'kscet',
+    title: 'KSCST Smart Campus IoT Network',
+    description: 'Implementation of IoT sensors across KSCST campus for energy management, security, and environmental monitoring.',
+    category: 'kscst',
     status: 'planning',
     priority: 'high',
     startDate: '2024-06-01',
@@ -482,9 +482,9 @@ export const mockProjects: Project[] = [
   },
   {
     id: '18',
-    title: 'KSCET Virtual Reality Lab',
-    description: 'State-of-the-art VR lab for KSCET with educational content and immersive learning experiences.',
-    category: 'kscet',
+    title: 'KSCST Virtual Reality Lab',
+    description: 'State-of-the-art VR lab for KSCST with educational content and immersive learning experiences.',
+    category: 'kscst',
     status: 'on-hold',
     priority: 'medium',
     startDate: '2024-01-01',
@@ -503,9 +503,9 @@ export const mockProjects: Project[] = [
   },
   {
     id: '19',
-    title: 'KSCET Mobile App Ecosystem',
-    description: 'Comprehensive mobile app ecosystem for KSCET students, faculty, and staff with integrated services.',
-    category: 'kscet',
+    title: 'KSCST Mobile App Ecosystem',
+    description: 'Comprehensive mobile app ecosystem for KSCST students, faculty, and staff with integrated services.',
+    category: 'kscst',
     status: 'testing',
     priority: 'high',
     startDate: '2023-08-01',
@@ -524,9 +524,9 @@ export const mockProjects: Project[] = [
   },
   {
     id: '20',
-    title: 'KSCET Placement Management System',
-    description: 'Advanced placement management system for KSCET with company portal, student profiles, and placement analytics.',
-    category: 'kscet',
+    title: 'KSCST Placement Management System',
+    description: 'Advanced placement management system for KSCST with company portal, student profiles, and placement analytics.',
+    category: 'kscst',
     status: 'completed',
     priority: 'critical',
     startDate: '2022-09-01',
@@ -542,5 +542,70 @@ export const mockProjects: Project[] = [
     ],
     createdAt: '2022-08-15',
     updatedAt: '2023-08-31'
+  },
+
+  // Additional KSCST Projects
+  {
+    id: '21',
+    title: 'KSCST Innovation Hub Platform',
+    description: 'Digital platform for fostering innovation and entrepreneurship among KSCST students with project showcases and funding opportunities.',
+    category: 'kscst',
+    status: 'in-progress',
+    priority: 'high',
+    startDate: '2024-01-01',
+    endDate: '2024-10-31',
+    progress: 30,
+    manager: mockTeamMembers[2],
+    teamMembers: [mockTeamMembers[4], mockTeamMembers[6], mockTeamMembers[9]],
+    technologies: ['React', 'Node.js', 'MongoDB', 'Stripe API', 'AWS'],
+    budget: 150000,
+    milestones: [
+      { id: '44', title: 'Project Showcase Module', description: 'Develop project showcase functionality', dueDate: '2024-05-31', completed: false },
+      { id: '45', title: 'Funding Portal', description: 'Implement funding opportunity portal', dueDate: '2024-08-31', completed: false }
+    ],
+    createdAt: '2023-12-01',
+    updatedAt: '2024-03-15'
+  },
+  {
+    id: '22',
+    title: 'KSCST AI-Powered Learning Analytics',
+    description: 'Advanced analytics platform using AI to track student learning patterns and provide personalized recommendations.',
+    category: 'kscst',
+    status: 'planning',
+    priority: 'critical',
+    startDate: '2024-07-01',
+    endDate: '2025-06-30',
+    progress: 10,
+    manager: mockTeamMembers[2],
+    teamMembers: [mockTeamMembers[1], mockTeamMembers[7]],
+    technologies: ['Python', 'TensorFlow', 'React', 'PostgreSQL', 'Apache Kafka'],
+    budget: 250000,
+    milestones: [
+      { id: '46', title: 'Data Collection Framework', description: 'Establish learning data collection framework', dueDate: '2024-09-30', completed: false },
+      { id: '47', title: 'AI Model Training', description: 'Train machine learning models', dueDate: '2024-12-31', completed: false }
+    ],
+    createdAt: '2024-06-01',
+    updatedAt: '2024-06-15'
+  },
+  {
+    id: '23',
+    title: 'KSCST Sustainable Energy Monitoring',
+    description: 'Real-time monitoring and optimization system for campus energy consumption with renewable energy integration.',
+    category: 'kscst',
+    status: 'in-progress',
+    priority: 'medium',
+    startDate: '2023-09-01',
+    endDate: '2024-08-31',
+    progress: 65,
+    manager: mockTeamMembers[1],
+    teamMembers: [mockTeamMembers[5], mockTeamMembers[11]],
+    technologies: ['IoT Sensors', 'Python', 'InfluxDB', 'Grafana', 'Solar Panel API'],
+    budget: 180000,
+    milestones: [
+      { id: '48', title: 'Sensor Installation', description: 'Install energy monitoring sensors', dueDate: '2024-02-28', completed: true, completedAt: '2024-02-25' },
+      { id: '49', title: 'Dashboard Development', description: 'Complete energy dashboard', dueDate: '2024-06-30', completed: false }
+    ],
+    createdAt: '2023-08-15',
+    updatedAt: '2024-03-20'
   }
 ];
