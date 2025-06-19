@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
@@ -131,7 +130,7 @@ const CreateProjectModal: React.FC<CreateProjectModalProps> = ({ isOpen, onClose
                   <SelectItem value="mini">Mini Project</SelectItem>
                   <SelectItem value="major">Major Project</SelectItem>
                   <SelectItem value="rnd">R&D Project</SelectItem>
-                  <SelectItem value="kscet">KSCET Project</SelectItem>
+                  <SelectItem value="kscst">KSCST Project</SelectItem>
                 </SelectContent>
               </Select>
             </div>

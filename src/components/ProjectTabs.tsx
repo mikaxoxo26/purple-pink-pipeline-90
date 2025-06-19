@@ -15,7 +15,7 @@ const ProjectTabs: React.FC<ProjectTabsProps> = ({ activeTab, onTabChange, onCre
     { value: 'mini', label: 'Mini Projects', icon: Book, count: 5 },
     { value: 'major', label: 'Major Projects', icon: BookPlus, count: 4 },
     { value: 'rnd', label: 'R&D Projects', icon: Folder, count: 4 },
-    { value: 'kscet', label: 'KSCET Projects', icon: Calendar, count: 7 },
+    { value: 'kscst', label: 'KSCST Projects', icon: Calendar, count: 7 },
   ];
 
   return (

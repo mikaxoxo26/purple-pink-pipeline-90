@@ -1,19 +1,19 @@
-
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
 import { Project } from '@/types';
-import { Calendar, Users, User, Folder } from 'lucide-react';
+import { Calendar, Users, User, Folder, Edit } from 'lucide-react';
 import { format } from 'date-fns';
 
 interface ProjectCardProps {
   project: Project;
   onViewDetails: (project: Project) => void;
+  onEditProject: (project: Project) => void;
 }
 
-const ProjectCard: React.FC<ProjectCardProps> = ({ project, onViewDetails }) => {
+const ProjectCard: React.FC<ProjectCardProps> = ({ project, onViewDetails, onEditProject }) => {
   const getStatusColor = (status: string) => {
     switch (status) {
       case 'completed':
@@ -46,6 +46,14 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, onViewDetails }) => 
     }
   };
 
+  const getProgressColor = (progress: number) => {
+    if (progress >= 80) return 'from-green-500 to-green-600';
+    if (progress >= 60) return 'from-blue-500 to-blue-600';
+    if (progress >= 40) return 'from-yellow-500 to-yellow-600';
+    if (progress >= 20) return 'from-orange-500 to-orange-600';
+    return 'from-red-500 to-red-600';
+  };
+
   return (
     <Card className="group hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border-0 shadow-lg bg-white/80 backdrop-blur-sm">
       <CardHeader className="pb-3">
@@ -74,14 +82,14 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, onViewDetails }) => 
         <div className="space-y-2">
           <div className="flex items-center justify-between text-xs text-gray-500">
             <span>Progress</span>
-            <span>{project.progress}%</span>
+            <span className="font-semibold text-gray-700">{project.progress}%</span>
           </div>
-          <Progress value={project.progress} className="h-2">
+          <div className="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
             <div 
-              className="h-full bg-gradient-to-r from-pink-500 to-purple-600 rounded-full transition-all duration-300"
+              className={`h-full bg-gradient-to-r ${getProgressColor(project.progress)} rounded-full transition-all duration-500 shadow-sm`}
               style={{ width: `${project.progress}%` }}
             />
-          </Progress>
+          </div>
         </div>
 
         <div className="grid grid-cols-2 gap-4 text-xs text-gray-600">
@@ -122,14 +130,24 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, onViewDetails }) => 
           )}
         </div>
 
-        <Button
-          onClick={() => onViewDetails(project)}
-          className="w-full bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white transition-all duration-200 transform hover:scale-[1.02]"
-          size="sm"
-        >
-          <Folder className="w-4 h-4 mr-2" />
-          View Details
-        </Button>
+        <div className="flex gap-2 pt-2">
+          <Button
+            onClick={() => onViewDetails(project)}
+            className="flex-1 bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white transition-all duration-200 transform hover:scale-[1.02]"
+            size="sm"
+          >
+            <Folder className="w-4 h-4 mr-2" />
+            View Details
+          </Button>
+          <Button
+            onClick={() => onEditProject(project)}
+            variant="outline"
+            className="border-2 border-gray-300 hover:border-pink-400 hover:bg-pink-50"
+            size="sm"
+          >
+            <Edit className="w-4 h-4" />
+          </Button>
+        </div>
       </CardContent>
     </Card>
   );

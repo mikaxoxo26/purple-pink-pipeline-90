@@ -8,9 +8,13 @@ import ProjectTabs from '@/components/ProjectTabs';
 import ProjectCard from '@/components/ProjectCard';
 import ProjectDetailModal from '@/components/ProjectDetailModal';
 import CreateProjectModal from '@/components/CreateProjectModal';
+import EditProjectModal from '@/components/EditProjectModal';
+import TeamMembersModal from '@/components/TeamMembersModal';
 import DashboardStats from '@/components/DashboardStats';
 import { Project } from '@/types';
 import { TabsContent } from '@/components/ui/tabs';
+import { Button } from '@/components/ui/button';
+import { Users } from 'lucide-react';
 
 const Index = () => {
   const { user, isLoading } = useAuth();
@@ -19,14 +23,25 @@ const Index = () => {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [isDetailModalOpen, setIsDetailModalOpen] = useState(false);
   const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
+  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+  const [isTeamModalOpen, setIsTeamModalOpen] = useState(false);
 
   const handleViewDetails = (project: Project) => {
     setSelectedProject(project);
     setIsDetailModalOpen(true);
   };
 
+  const handleEditProject = (project: Project) => {
+    setSelectedProject(project);
+    setIsEditModalOpen(true);
+  };
+
   const handleCreateProject = () => {
     setIsCreateModalOpen(true);
+  };
+
+  const handleViewTeamMembers = () => {
+    setIsTeamModalOpen(true);
   };
 
   if (isLoading) {
@@ -53,20 +68,29 @@ const Index = () => {
       />
       
       <main className="container mx-auto px-4 py-8">
-        <div className="mb-8">
-          <h2 className="text-3xl font-bold font-poppins gradient-text mb-2">
-            Welcome back, {user.name}!
-          </h2>
-          <p className="text-gray-600">
-            Manage and monitor all your projects from this comprehensive dashboard.
-          </p>
+        <div className="mb-8 flex items-center justify-between">
+          <div>
+            <h2 className="text-3xl font-bold font-poppins gradient-text mb-2">
+              Welcome back, {user.name}!
+            </h2>
+            <p className="text-gray-600">
+              Manage and monitor all your projects from this comprehensive dashboard.
+            </p>
+          </div>
+          <Button
+            onClick={handleViewTeamMembers}
+            className="bg-gradient-to-r from-blue-500 to-cyan-600 hover:from-blue-600 hover:to-cyan-700 text-white"
+          >
+            <Users className="w-4 h-4 mr-2" />
+            View Team Members
+          </Button>
         </div>
 
         <DashboardStats />
 
         <div className="mb-6">
           <h3 className="text-2xl font-bold font-poppins text-gray-900 mb-4 capitalize">
-            {activeTab === 'rnd' ? 'R&D Projects' : `${activeTab} Projects`}
+            {activeTab === 'rnd' ? 'R&D Projects' : activeTab === 'kscst' ? 'KSCST Projects' : `${activeTab} Projects`}
           </h3>
           <p className="text-gray-600">
             {currentProjects.length} project{currentProjects.length !== 1 ? 's' : ''} in this category
@@ -98,6 +122,7 @@ const Index = () => {
                 key={project.id}
                 project={project}
                 onViewDetails={handleViewDetails}
+                onEditProject={handleEditProject}
               />
             ))}
           </div>
@@ -116,6 +141,20 @@ const Index = () => {
       <CreateProjectModal
         isOpen={isCreateModalOpen}
         onClose={() => setIsCreateModalOpen(false)}
+      />
+
+      <EditProjectModal
+        project={selectedProject}
+        isOpen={isEditModalOpen}
+        onClose={() => {
+          setIsEditModalOpen(false);
+          setSelectedProject(null);
+        }}
+      />
+
+      <TeamMembersModal
+        isOpen={isTeamModalOpen}
+        onClose={() => setIsTeamModalOpen(false)}
       />
     </div>
   );
