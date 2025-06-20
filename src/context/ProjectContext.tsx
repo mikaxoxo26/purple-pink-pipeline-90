@@ -26,9 +26,57 @@ export const useProjects = () => {
   return context;
 };
 
+const STORAGE_KEY = 'project-management-data';
+
+const loadFromStorage = () => {
+  try {
+    const stored = localStorage.getItem(STORAGE_KEY);
+    if (stored) {
+      const data = JSON.parse(stored);
+      return {
+        projects: data.projects || mockProjects,
+        teamMembers: data.teamMembers || mockTeamMembers
+      };
+    }
+  } catch (error) {
+    console.error('Error loading data from localStorage:', error);
+  }
+  return {
+    projects: mockProjects,
+    teamMembers: mockTeamMembers
+  };
+};
+
+const saveToStorage = (projects: Project[], teamMembers: TeamMember[]) => {
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify({
+      projects,
+      teamMembers,
+      lastUpdated: new Date().toISOString()
+    }));
+    console.log('Data saved to localStorage');
+  } catch (error) {
+    console.error('Error saving data to localStorage:', error);
+  }
+};
+
 export const ProjectProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [projects, setProjects] = useState<Project[]>(mockProjects);
-  const [teamMembers, setTeamMembers] = useState<TeamMember[]>(mockTeamMembers);
+  const [projects, setProjects] = useState<Project[]>([]);
+  const [teamMembers, setTeamMembers] = useState<TeamMember[]>([]);
+
+  // Load data from localStorage on component mount
+  useEffect(() => {
+    const { projects: storedProjects, teamMembers: storedTeamMembers } = loadFromStorage();
+    setProjects(storedProjects);
+    setTeamMembers(storedTeamMembers);
+  }, []);
+
+  // Save to localStorage whenever projects or teamMembers change
+  useEffect(() => {
+    if (projects.length > 0) { // Only save if we have data loaded
+      saveToStorage(projects, teamMembers);
+    }
+  }, [projects, teamMembers]);
 
   const addProject = (projectData: Omit<Project, 'id' | 'createdAt' | 'updatedAt'>) => {
     const newProject: Project = {
