@@ -131,6 +131,7 @@ const CreateProjectModal: React.FC<CreateProjectModalProps> = ({ isOpen, onClose
                   <SelectItem value="major">Major Project</SelectItem>
                   <SelectItem value="rnd">R&D Project</SelectItem>
                   <SelectItem value="kscst">KSCST Project</SelectItem>
+                  <SelectItem value="funded">Funded Project</SelectItem>
                 </SelectContent>
               </Select>
             </div>

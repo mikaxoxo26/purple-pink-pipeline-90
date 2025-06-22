@@ -58,6 +58,19 @@ const Index = () => {
 
   const currentProjects = getProjectsByCategory(activeTab);
 
+  const getCategoryDisplayName = (category: string) => {
+    switch (category) {
+      case 'rnd':
+        return 'R&D Projects';
+      case 'kscst':
+        return 'KSCST Projects';
+      case 'funded':
+        return 'Funded Projects';
+      default:
+        return `${category.charAt(0).toUpperCase() + category.slice(1)} Projects`;
+    }
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-50 via-pink-50 to-amber-50">
       <Header />
@@ -89,8 +102,8 @@ const Index = () => {
         <DashboardStats />
 
         <div className="mb-6">
-          <h3 className="text-3xl font-bold font-playfair text-gray-900 mb-4 capitalize">
-            {activeTab === 'rnd' ? 'R&D Projects' : activeTab === 'kscst' ? 'KSCST Projects' : `${activeTab} Projects`}
+          <h3 className="text-3xl font-bold font-playfair text-gray-900 mb-4">
+            {getCategoryDisplayName(activeTab)}
           </h3>
           <p className="text-gray-600 font-poppins text-lg">
             {currentProjects.length} project{currentProjects.length !== 1 ? 's' : ''} in this category

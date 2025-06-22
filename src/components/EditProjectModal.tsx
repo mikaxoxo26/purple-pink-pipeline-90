@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
@@ -21,7 +20,7 @@ const EditProjectModal: React.FC<EditProjectModalProps> = ({ project, isOpen, on
   const [formData, setFormData] = useState({
     title: '',
     description: '',
-    category: 'mini' as 'mini' | 'major' | 'rnd' | 'kscst',
+    category: 'mini' as 'mini' | 'major' | 'rnd' | 'kscst' | 'funded',
     status: 'planning' as 'planning' | 'in-progress' | 'testing' | 'completed' | 'on-hold',
     priority: 'medium' as 'low' | 'medium' | 'high' | 'critical',
     progress: 0,
@@ -99,6 +98,7 @@ const EditProjectModal: React.FC<EditProjectModalProps> = ({ project, isOpen, on
                   <SelectItem value="major">Major Project</SelectItem>
                   <SelectItem value="rnd">R&D Project</SelectItem>
                   <SelectItem value="kscst">KSCST Project</SelectItem>
+                  <SelectItem value="funded">Funded Project</SelectItem>
                 </SelectContent>
               </Select>
             </div>

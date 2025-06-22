@@ -2,7 +2,7 @@
 import React from 'react';
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Button } from '@/components/ui/button';
-import { Book, BookPlus, Calendar, Folder, FolderPlus } from 'lucide-react';
+import { Book, BookPlus, Calendar, Folder, FolderPlus, DollarSign } from 'lucide-react';
 
 interface ProjectTabsProps {
   activeTab: string;
@@ -16,6 +16,7 @@ const ProjectTabs: React.FC<ProjectTabsProps> = ({ activeTab, onTabChange, onCre
     { value: 'major', label: 'Major Projects', icon: BookPlus, count: 4 },
     { value: 'rnd', label: 'R&D Projects', icon: Folder, count: 4 },
     { value: 'kscst', label: 'KSCST Projects', icon: Calendar, count: 10 },
+    { value: 'funded', label: 'Funded Projects', icon: DollarSign, count: 3 },
   ];
 
   return (
@@ -23,7 +24,7 @@ const ProjectTabs: React.FC<ProjectTabsProps> = ({ activeTab, onTabChange, onCre
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           <Tabs value={activeTab} onValueChange={onTabChange} className="flex-1">
-            <TabsList className="grid grid-cols-4 gap-2 bg-gradient-to-r from-purple-50 to-pink-50 p-1 rounded-lg h-auto border border-purple-100">
+            <TabsList className="grid grid-cols-5 gap-2 bg-gradient-to-r from-purple-50 to-pink-50 p-1 rounded-lg h-auto border border-purple-100">
               {tabs.map((tab) => {
                 const IconComponent = tab.icon;
                 return (

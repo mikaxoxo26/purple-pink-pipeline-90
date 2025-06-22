@@ -20,7 +20,7 @@ export interface Project {
   id: string;
   title: string;
   description: string;
-  category: 'mini' | 'major' | 'rnd' | 'kscst';
+  category: 'mini' | 'major' | 'rnd' | 'kscst' | 'funded';
   status: 'planning' | 'in-progress' | 'testing' | 'completed' | 'on-hold';
   priority: 'low' | 'medium' | 'high' | 'critical';
   startDate: string;
