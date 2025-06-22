@@ -1,7 +1,6 @@
-
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { Project, TeamMember, ProjectStats } from '@/types';
-import { mockProjects, mockTeamMembers } from '@/data/mockData';
+import { mockProjects, mockTeamMembers } from '@/data';
 
 interface ProjectContextType {
   projects: Project[];
